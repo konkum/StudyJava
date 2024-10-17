@@ -3,16 +3,16 @@ import java.io.Serializable;
 public class Device implements Serializable {
     private int id;
     private Type type;
-    private float unitPrice;
+    private double unitPrice;
     private RateType rateType;
     private DateAudit dateAudit;
     private String branchName;
     private String itemName;
     private String version;
-    private float originalPrice;
+    private double originalPrice;
 
-    public Device(int id, Type type, float unitPrice, RateType rateType, DateAudit dateAudit, String branchName,
-            String itemName, String version, float originalPrice) {
+    public Device(int id, Type type, double unitPrice, RateType rateType, DateAudit dateAudit, String branchName,
+            String itemName, String version, double originalPrice) {
         this.id = id;
         this.type = type;
         this.unitPrice = unitPrice;
@@ -40,11 +40,11 @@ public class Device implements Serializable {
         this.type = type;
     }
 
-    public float getUnitPrice() {
+    public double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(float unitPrice) {
+    public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
 
@@ -88,11 +88,22 @@ public class Device implements Serializable {
         this.version = version;
     }
 
-    public float getOriginalPrice() {
+    public double getOriginalPrice() {
         return originalPrice;
     }
 
-    public void setOriginalPrice(float originalPrice) {
+    public void setOriginalPrice(double originalPrice) {
         this.originalPrice = originalPrice;
+    }
+
+    public double calculateTotalPrice() {
+        return this.originalPrice * this.rateType.getValue();
+    }
+
+    @Override
+    public String toString() {
+        return "Device [id=" + id + ", type=" + type + ", unitPrice=" + unitPrice + ", rateType=" + rateType
+                + ", dateAudit=" + dateAudit + ", branchName=" + branchName + ", itemName=" + itemName + ", version="
+                + version + ", originalPrice=" + originalPrice + "]";
     }
 }

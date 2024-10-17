@@ -8,9 +8,9 @@ public class Employee implements Serializable {
     private String fullName;
     private String address;
     private String phoneNumber;
-    private String accountNumber;
+    private int accountNumber;
 
-    public Employee(int id, String fullName, String address, String phoneNumber, String accountNumber) {
+    public Employee(int id, String fullName, String address, String phoneNumber, int accountNumber) {
         this.id = id;
         this.fullName = fullName;
         this.address = address;
@@ -50,11 +50,11 @@ public class Employee implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getAccountNumber() {
+    public int getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(String accountNumber) {
+    public void setAccountNumber(int accountNumber) {
         this.accountNumber = accountNumber;
     }
 
@@ -63,4 +63,5 @@ public class Employee implements Serializable {
         return "Employee [id=" + id + ", fullName=" + fullName + ", address=" + address + ", phoneNumber=" + phoneNumber
                 + ", accountNumber=" + accountNumber + "]";
     }
+
 }

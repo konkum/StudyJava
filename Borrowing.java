@@ -1,18 +1,19 @@
 import java.io.Serializable;
+import java.util.List;
 
 public class Borrowing implements Serializable {
     private int id;
     private DateAudit dateAudit;
-    private String totalPrice;
+    private double totalPrice;
     private Employee employeeInfo;
-    private Device deviceInfo;
+    private List<Device> deviceInfo;
 
-    public Borrowing(int id, DateAudit dateAudit, String totalPrice, Employee employeeInfo, Device deviceInfo) {
+    public Borrowing(int id, DateAudit dateAudit, Employee employeeInfo, List<Device> deviceInfo) {
         this.id = id;
         this.dateAudit = dateAudit;
-        this.totalPrice = totalPrice;
         this.employeeInfo = employeeInfo;
         this.deviceInfo = deviceInfo;
+        this.totalPrice = calculateTotalPrice();
     }
 
     public int getId() {
@@ -31,11 +32,11 @@ public class Borrowing implements Serializable {
         this.dateAudit = dateAudit;
     }
 
-    public String getTotalPrice() {
+    public double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(String totalPrice) {
+    public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
 
@@ -47,11 +48,29 @@ public class Borrowing implements Serializable {
         this.employeeInfo = employeeInfo;
     }
 
-    public Device getDeviceInfo() {
+    public List<Device> getDeviceInfo() {
         return deviceInfo;
     }
 
-    public void setDeviceInfo(Device deviceInfo) {
+    public void setDeviceInfo(List<Device> deviceInfo) {
         this.deviceInfo = deviceInfo;
+    }
+
+    public double calculateTotalPrice() {
+        return deviceInfo.stream().mapToDouble(Device::calculateTotalPrice).sum();
+    }
+
+    public void addDevice(Device device) {
+        deviceInfo.add(device);
+    }
+
+    public void removeDevice(Device device) {
+        deviceInfo.remove(device);
+    }
+
+    @Override
+    public String toString() {
+        return "Borrowing [id=" + id + ", dateAudit=" + dateAudit + ", totalPrice=" + totalPrice + ", employeeInfo="
+                + employeeInfo + ", deviceInfo=" + deviceInfo + "]";
     }
 }

@@ -1,49 +1,58 @@
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class DateAudit implements Serializable {
 
-    private Date createAt;
-    private Date updatedAt;
-    private Date handOverDate;
-    private Date evictionDate;
+    private LocalDate createAt;
+    private LocalDate updatedAt;
+    private LocalDate handOverDate;
+    private LocalDate evictionDate;
 
-    public DateAudit(Date createAt, Date updatedAt, Date handOverDate, Date evictionDate) {
-        this.createAt = createAt;
-        this.updatedAt = updatedAt;
+    public DateAudit() {
+        createAt = LocalDate.now();
+        updatedAt = LocalDate.now();
+    }
+
+    public DateAudit(LocalDate handOverDate, LocalDate evictionDate) {
         this.handOverDate = handOverDate;
         this.evictionDate = evictionDate;
     }
 
-    public Date getCreateAt() {
+    public LocalDate getCreateAt() {
         return createAt;
     }
 
-    public void setCreateAt(Date createAt) {
+    public void setCreateAt(LocalDate createAt) {
         this.createAt = createAt;
     }
 
-    public Date getUpdatedAt() {
+    public LocalDate getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(LocalDate updatedAt) {
         this.updatedAt = updatedAt;
     }
 
-    public Date getHandOverDate() {
+    public LocalDate getHandOverDate() {
         return handOverDate;
     }
 
-    public void setHandOverDate(Date handOverDate) {
+    public void setHandOverDate(LocalDate handOverDate) {
         this.handOverDate = handOverDate;
     }
 
-    public Date getEvictionDate() {
+    public LocalDate getEvictionDate() {
         return evictionDate;
     }
 
-    public void setEvictionDate(Date evictionDate) {
+    public void setEvictionDate(LocalDate evictionDate) {
         this.evictionDate = evictionDate;
+    }
+
+    @Override
+    public String toString() {
+        return "DateAudit [createAt=" + createAt + ", updatedAt=" + updatedAt + ", handOverDate=" + handOverDate
+                + ", evictionDate=" + evictionDate + "]";
     }
 }
