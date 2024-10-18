@@ -1,7 +1,3 @@
 public enum Type {
-    MOUSE,
-    KEYBOARD,
-    DISPLAY,
-    CASE,
-    CABLE
+    MOUSE,KEYBOARD,DISPLAY,CASE,CABLE
 }

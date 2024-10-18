@@ -11,4 +11,8 @@ public class EmployeeService {
     public Employee getEmployee(int index) {
         return employees.get(index);
     }
+
+    public List<Employee> getAllEmployees() {
+        return employees;
+    }
 }
