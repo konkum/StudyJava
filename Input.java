@@ -161,12 +161,12 @@ public class Input {
         }
     }
 
-    void sampleData() {
+    static void sampleData() {
         DeviceService deviceService = new DeviceService();
         BorrowingService borrowingService = new BorrowingService();
         EmployeeService employeeService = new EmployeeService();
         for (int i = 1; i <= 5; i++) {
-            Employee employee = new Employee(i, "Employee " + i, "Address " + i, "Phone" + i, 1000 + i * 100);
+            Employee employee = new Employee(i, "Employee " + i, "Address " + i, "01234567" + i, 1000 + i * 100);
             employeeService.addEmployee(employee);
         }
 
